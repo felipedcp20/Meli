@@ -4,5 +4,6 @@ app = FastAPI()
 
 
 @app.get("/")
-def read_root():
-    return {"Test: Meli"}
+async def root():
+    """service"""
+    return {"service": "Meli", "version": "1.0"}
