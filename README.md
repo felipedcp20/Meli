@@ -17,3 +17,13 @@
 4. Run the api with :
 
 ```uvicorn main:app --reload```
+
+5. Create table user with columns:
+
+```CREATE TABLE users (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(20) UNIQUE,
+    usermail VARCHAR(30) UNIQUE,
+    credit_card_number VARCHAR(150),
+    created_at TIMESTAMP ,
+);```

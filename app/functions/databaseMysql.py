@@ -12,10 +12,9 @@ def connection_db (host,user,passwd):
             user=user,
             passwd=passwd,
         )
-
-
-        return (True,connection)
+        cursor=connection.cursor()
+        return cursor
 
 
     except pymysql.err.OperationalError as e:
-        return HTTPException(status_code=404, detail=f"{e}")
+        raise HTTPException(status_code=404, detail=f"{e}") from e

@@ -5,17 +5,25 @@ from app.functions.databaseMysql import connection_db
 
 router = APIRouter()
 
-@router.post(path="/api/v1/database")
-async def databasepersistence(database : DataBase):
+
+@router.post(path="/api/v1/database", status_code=201)
+async def databasepersistence(database: DataBase):
     """_summary_
 
     Args:
-        database (DataBase): _description_
+        database (DataBase):
+         host: str
+        User: str
+        Password: str
 
     Returns:
         _type_: _description_
     """
 
-    status = connection_db(database.host,database.User,database.Password)
-    print(status)
-    return {"message"}
+    Datas = []
+    connectionMysql = connection_db(database.host, database.User, database.Password)
+    connectionMysql.execute("SHOW DATABASES")
+    for databases in connectionMysql:
+        Datas.append(databases)
+
+    return Datas
