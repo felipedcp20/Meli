@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi import APIRouter
+from app.routes import databaseMysql
 
 app = FastAPI()
 
@@ -10,4 +11,8 @@ async def root():
     return {"service": "Meli", "version": "1.0"}
 
 
-apirouter = APIRouter
+api_router = APIRouter()
+
+api_router.include_router(databaseMysql.router, tags=["databaseMysql"])
+
+app.include_router(api_router)
