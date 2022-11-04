@@ -1,0 +1,22 @@
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v3.4.0
+      hooks:
+        #Checks for a common error of placing code before the docstring.
+        - id: check-docstring-first
+        #check-merge-conflict
+        - id: check-merge-conflict
+        #Trims trailing whitespace.
+        - id: trailing-whitespace
+        #Makes sure files end in a newline and only a newline.
+        - id: end-of-file-fixer
+        #Simply check whether files parse as valid python.
+        - id: check-ast
+    - repo: https://github.com/pycqa/pylint
+      rev: pylint-2.6.0
+      hooks:
+        - id: pylint
+          name: Pylint
+          args: [
+              "--disable=C0114, E0401, E1120, E1136, R0801, R0903, W0511, W0703, W0702, R0913, C0103, R0801, E1101, R1710"
+          ]
