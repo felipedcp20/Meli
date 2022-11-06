@@ -2,8 +2,7 @@ import pymysql
 from fastapi import HTTPException
 
 
-
-def connection_db (host,user,passwd):
+def connection_dbMysql(host, user, passwd):
     """function to create coneccion with db Mysql"""
 
     try:
@@ -12,9 +11,8 @@ def connection_db (host,user,passwd):
             user=user,
             passwd=passwd,
         )
-        cursor=connection.cursor()
+        cursor = connection.cursor()
         return cursor
-
 
     except pymysql.err.OperationalError as e:
         raise HTTPException(status_code=404, detail=f"{e}") from e
