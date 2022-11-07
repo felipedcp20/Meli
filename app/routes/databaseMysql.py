@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from app.models.database import DataBase
 from app.functions.databaseMysql import connection_dbMysql
 from app.functions.databaseMongo import connection_dbMongo
-from app.models.mongo_acces import mongoenv
+from app.models.env import mongoenv
 
 
 router = APIRouter()
@@ -30,8 +30,7 @@ async def databasepersistence(database: DataBase):
     for databases in connectionMysql:
         Datas.append(databases)
 
-    coneccionMongo = connection_dbMongo(mongoenv.url,mongoenv.user,mongoenv.passw)
+    coneccionMongo = connection_dbMongo(mongoenv.url, mongoenv.user, mongoenv.passw)
     coneccionMongo.server_info()
-
 
     return Datas
