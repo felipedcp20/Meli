@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi import APIRouter
-from app.routes import databaseMysql
+from app.routes import persistconnection
 
 app = FastAPI()
 
@@ -13,6 +13,6 @@ async def root():
 
 api_router = APIRouter()
 
-api_router.include_router(databaseMysql.router, tags=["databaseMysql"])
+api_router.include_router(persistconnection.router, tags=["databaseMysql"])
 
 app.include_router(api_router)
