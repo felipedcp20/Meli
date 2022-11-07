@@ -21,7 +21,7 @@ def connection_dbMongo(url, username, password):
     try:
         client.server_info()
     except Exception as error:
-        detail = f"connection to sql: ok , please consult the mongoAcces {error}"
+        detail = f"credentials invalid, please consult the mongoAcces {error}"
         raise HTTPException(status_code=404, detail=detail) from error
 
     return client
