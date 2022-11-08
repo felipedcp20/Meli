@@ -48,7 +48,7 @@ async def clasification(iddatabase):
     user_decrypt = decrypt(
         elementfind["user"].replace("b'", "").replace("'", ""), keyencriptor.key
     )
-    host = elementfind["host"]
+    host = elementfind["url"]
 
     cursor = connection_dbMysql(host, user_decrypt, passw_decrypt)
     cursor.execute("SHOW DATABASES")
