@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>SQL Consult</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="shortcut icon" href="/static/Images/favicon.png" type="image/x-icon">
+
+</head>
+<body>
+<h1>
+  Estructura de la base de datos consultada
+</h1>
+<p>
+  Id de la consulta : {{front._id}}
+</p>
+<h1>
+  fecha de la consulta {{front.datescan}}
+</h1>
+
+
+{% for element in front.schema %}
+
+  <h1>
+    Nombre Base de Datos: {{element.databasename}}
+
+    {% for element in element.tables %}
+      <h1>Nombre tabla: {{element.nametable}}</h1>
+
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Column:
+              </th>
+              <th>
+                Information_type:
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+      {% for value in element.columns %}
+        {% for element in value %}
+            <tr>
+              <td data-title='Provider Name'>
+                  {{element}}
+              </td>
+          {% endfor %}
+        {% for element in value.values() %}
+          <td data-title='E-mail'>
+                {{element}}
+          </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+          </tbody>
+        </table>
+      </main>
+
+
+    {% endfor %}
+  </h1>
+
+
+
+    <h1>{{tables}}</h1>
+
+
+
+
+
+{% endfor %}
+
+
+</body>
+</html>
