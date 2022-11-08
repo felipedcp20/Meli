@@ -66,21 +66,30 @@ def clasificationcolumns(listofcolumns, regex):
 def clasificationdb(listofdatabases, cursor):
     """generate clasificatioDb"""
 
-    response = {}
+
+    tablesjson = []
 
     for database in listofdatabases:
         cursor.execute(f"USE {database}")
         tables = querymysql("show tables", cursor)
         tablescolumn =[]
+        addfinal = {}
 
         for table in tables:
             columns = querymysql(f"show columns from {table}", cursor)
 
             columnsclasification = clasificationcolumns(columns, keywords)
+            tables_column = { "nametable" : f"{table}"}
+            tables_column["columns"] = columnsclasification
 
-            tables_column = {f"{table}" :columnsclasification}
             tablescolumn.append(tables_column)
 
-        response[f"{database}"] = tablescolumn
+        addfinal["databasename"] = database
+        addfinal["tables"] = tablescolumn
+        tablesjson.append(addfinal)
 
-    return response
+
+
+
+
+    return {"schema": tablesjson}
