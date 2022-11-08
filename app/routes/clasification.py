@@ -69,5 +69,7 @@ async def clasification(iddatabase):
     mongotable = databasemongo["SqlClasification"]
     id_value = mongotable.insert_one(values).inserted_id
 
+    cursor.close()
+    conectionMongo.close()
 
     return {"id of mysql clasificated": f"{id_value}"}
