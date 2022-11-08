@@ -23,12 +23,10 @@ async def databasepersistence(database: DataBase):
         _type_: _description_
     """
 
-
     connectionMysql = connection_dbMysql(
         database.host, database.User, database.Password
     )
     connectionMysql.close()
-
 
     conectionMongo = connection_dbMongo(mongoenv.url, mongoenv.user, mongoenv.passw)
 
