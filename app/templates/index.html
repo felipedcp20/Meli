@@ -14,71 +14,60 @@
 <p>
   Id of consult : {{front._id}}
 </p>
-<main>
-  <table>
-    <thead>
-      <tr>
-        <th>
-          Column:
-        </th>
-        <th>
-          Information_type:
-        </th>
-      </tr>
-    </thead>
 
-    {% for element in front %}
+{% for element in front.schema %}
 
-    <p>
+  <h1>
+    Nombre Base de Datos: {{element.databasename}}
 
-    </p>
+    {% for element in element.tables %}
+      <h1>Nombre tabla: {{element.nametable}}</h1>
+
+      <main>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                Column:
+              </th>
+              <th>
+                Information_type:
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+      {% for value in element.columns %}
+        {% for element in value %}
+            <tr>
+              <td data-title='Provider Name'>
+                  {{element}}
+              </td>
+          {% endfor %}
+        {% for element in value.values() %}
+          <td data-title='E-mail'>
+                {{element}}
+          </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+          </tbody>
+        </table>
+      </main>
 
 
     {% endfor %}
-    <tfoot>
-      <tr>
-        <th colspan='3'>
-          Year: 2014
-        </th>
-      </tr>
-    </tfoot>
-    <tbody>
-      <tr>
-        <td data-title='Provider Name'>
-          Iacob Geaorgescu
-        </td>
-        <td data-title='E-mail'>
-          e-mail@test-email.com
-        </td>
-      </tr>
-      <tr>
-        <td data-title='Provider Name'>
-          Julius Neumann
-        </td>
-        <td data-title='E-mail'>
-          e-mail@test-email.com
-        </td>
-      </tr>
-      <tr>
-        <td data-title='Provider Name'>
-          Christoph Koller
-        </td>
-        <td data-title='E-mail'>
-          e-mail@test-email.com
-        </td>
-        </td>
-      </tr>
-      <tr>
-        <td data-title='Provider Name'>
-          Bram Lemmens
-        </td>
-        <td data-title='E-mail'>
-          e-mail@test-email.com
-        </td>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</main>
+  </h1>
+
+
+
+    <h1>{{tables}}</h1>
+
+
+
+
+
+{% endfor %}
+
+
 </body>
 </html>
