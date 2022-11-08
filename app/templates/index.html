@@ -5,15 +5,20 @@
   <title>SQL Consult</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="shortcut icon" href="/static/Images/favicon.png" type="image/x-icon">
 
 </head>
 <body>
 <h1>
-  Estructure to Database
+  Estructura de la base de datos consultada
 </h1>
 <p>
-  Id of consult : {{front._id}}
+  Id de la consulta : {{front._id}}
 </p>
+<h1>
+  fecha de la consulta {{front.datescan}}
+</h1>
+
 
 {% for element in front.schema %}
 
