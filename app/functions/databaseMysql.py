@@ -1,5 +1,14 @@
+import re
 import pymysql
+
 from fastapi import HTTPException
+
+
+keywords = [
+    ("credit", "CREDIT_CARD_NUMBER"),
+    ("username", "USERNAME"),
+    ("mail", "EMAIL_ADDRESS"),
+]
 
 
 def connection_dbMysql(host, user, passwd):
@@ -37,6 +46,22 @@ def querymysql(query, cursor):
     return result
 
 
+def clasificationcolumns(listofcolumns, regex):
+    """generate regex comparation"""
+    listclasificated = []
+    for column in listofcolumns:
+        value = None
+        for key in regex:
+            busqueda = re.search(key[0], column)
+            if busqueda is not None:
+                value = (column, key[1])
+                listclasificated.append(value)
+        if value is None:
+            value = (column, "N/A")
+            listclasificated.append(value)
+    return listclasificated
+
+
 def clasificationdb(listofdatabases, cursor):
     """generate clasificatioDb"""
 
@@ -48,7 +73,9 @@ def clasificationdb(listofdatabases, cursor):
 
         for table in tables:
             columns = querymysql(f"show columns from {table}", cursor)
-            tables_column = (database, table, columns)
+            columnsclasification = clasificationcolumns(columns, keywords)
+
+            tables_column = (database, table, columnsclasification)
             response.append(tables_column)
 
     return response

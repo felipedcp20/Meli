@@ -1,6 +1,8 @@
+from datetime import datetime
 import bson
-from fastapi import APIRouter, HTTPException
 from bson.objectid import ObjectId
+from fastapi import APIRouter, HTTPException
+
 
 from app.models.env import mongoenv, keyencriptor
 from app.functions.databaseMongo import connection_dbMongo
@@ -9,6 +11,8 @@ from app.functions.encryptor import decrypt
 
 
 router = APIRouter()
+time = datetime.now()
+date = time.strftime("%Y-%m-%d %H:%M%S")
 
 
 @router.post(path="/api/v1/database/scan", status_code=201)
@@ -16,9 +20,10 @@ async def clasification(iddatabase):
     """_summary_
 
     Args:
-        iddatabase (idDatabase): _description_
+        iddatabase (_type_): _description_
 
     Raises:
+        HTTPException: _description_
         HTTPException: _description_
 
     Returns:
@@ -58,7 +63,11 @@ async def clasification(iddatabase):
     databases.remove("mysql")
     databases.remove("performance_schema")
     databases.remove("sys")
+    values = {"clasificated": clasificationdb(databases, cursor), "date": date}
 
-    clasificationdb(databases, cursor)
 
-    return {"consult": f"{databases}"}
+    mongotable = databasemongo["SqlClasification"]
+    id_value = mongotable.insert_one(values).inserted_id
+
+
+    return {"id of mysql clasificated": f"{id_value}"}
