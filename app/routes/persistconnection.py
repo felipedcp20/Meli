@@ -30,13 +30,13 @@ async def databasepersistence(database: DataBase):
 
     conectionMongo = connection_dbMongo(mongoenv.url, mongoenv.user, mongoenv.passw)
 
-    user_encrypt = encrypt(database.User, keyencriptor.key)
-    pass_encrypt = encrypt(database.Password, keyencriptor.key)
+    user_encrypt = encrypt(mongoenv.user, keyencriptor.key)
+    pass_encrypt = encrypt(mongoenv.passw, keyencriptor.key)
 
     format_value = {
         "user": f"{user_encrypt}",
         "pass": f"{pass_encrypt}",
-        "host": f"{database.host}",
+        "url": f"{mongoenv.url}",
     }
 
     databasemongo = conectionMongo["meli"]

@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 
 from app.models.env import mongoenv, keyencriptor
 from app.functions.databaseMongo import connection_dbMongo
-from app.functions.databaseMysql import connection_dbMysql
+from app.functions.databaseMysql import connection_dbMysql, clasificationdb
 from app.functions.encryptor import decrypt
 
 
@@ -58,5 +58,7 @@ async def clasification(iddatabase):
     databases.remove("mysql")
     databases.remove("performance_schema")
     databases.remove("sys")
+
+    clasificationdb(databases, cursor)
 
     return {"consult": f"{databases}"}
