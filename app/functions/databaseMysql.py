@@ -54,10 +54,11 @@ def clasificationcolumns(listofcolumns, regex):
         for key in regex:
             busqueda = re.search(key[0], column)
             if busqueda is not None:
-                value = (column, key[1])
+                value = {column : key[1]}
                 listclasificated.append(value)
+                break
         if value is None:
-            value = (column, "N/A")
+            value = {column : "N/A"}
             listclasificated.append(value)
     return listclasificated
 
@@ -65,17 +66,21 @@ def clasificationcolumns(listofcolumns, regex):
 def clasificationdb(listofdatabases, cursor):
     """generate clasificatioDb"""
 
-    response = []
+    response = {}
 
     for database in listofdatabases:
         cursor.execute(f"USE {database}")
         tables = querymysql("show tables", cursor)
+        tablescolumn =[]
 
         for table in tables:
             columns = querymysql(f"show columns from {table}", cursor)
+
             columnsclasification = clasificationcolumns(columns, keywords)
 
-            tables_column = (database, table, columnsclasification)
-            response.append(tables_column)
+            tables_column = {f"{table}" :columnsclasification}
+            tablescolumn.append(tables_column)
+
+        response[f"{database}"] = tablescolumn
 
     return response

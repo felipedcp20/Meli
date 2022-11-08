@@ -63,8 +63,8 @@ async def clasification(iddatabase):
     databases.remove("mysql")
     databases.remove("performance_schema")
     databases.remove("sys")
-    values = {"clasificated": clasificationdb(databases, cursor), "date": date}
-
+    values = clasificationdb(databases, cursor)
+    values["datescan"] = date
 
     mongotable = databasemongo["SqlClasification"]
     id_value = mongotable.insert_one(values).inserted_id

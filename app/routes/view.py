@@ -1,23 +1,24 @@
-from fastapi import APIRouter, HTTPException
 import bson
 from bson.objectid import ObjectId
-from app.models.env import mongoenv
+from fastapi import APIRouter , HTTPException
+from fastapi import Request
+
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 from app.functions.databaseMongo import connection_dbMongo
+from app.models.env import mongoenv
+
 
 
 router = APIRouter()
 
 
-@router.get(path="/api/v1/database/scan/", status_code=201)
-async def getclasification(iddatabase):
-    """_summary_
+templates = Jinja2Templates(directory="app/templates")
 
-    Args:
-        iddatabase (str): Id Database to consult clasification
 
-    Returns:
-        json: json clasification database
-    """
+@router.get("/view", response_class=HTMLResponse)
+async def views(request: Request, iddatabase: str):
+    """return view html"""
     if not bson.ObjectId.is_valid(iddatabase):
         raise HTTPException(400, "Invalid id")
 
@@ -31,4 +32,5 @@ async def getclasification(iddatabase):
     if elementfind is None:
         raise HTTPException(status_code=400, detail="Invalid Id")
 
-    return {"conusult": f"{elementfind}"}
+
+    return templates.TemplateResponse("index.html", {"request": request, "front": elementfind})
