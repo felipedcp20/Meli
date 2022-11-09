@@ -77,7 +77,7 @@ This endpoint return the version name of the service and the version:
 ![](assets/endpoint_root.gif)
 
 
-## endpoint datapersince
+## endpoint datapersince:
 ```
 http://127.0.0.1:8000/api/v1/database
 ```
@@ -101,7 +101,7 @@ Response Body (example):
 ```
 ![](assets/endpoint_persistence.gif)
 
-## endpoint clasification
+## endpoint clasification:
 ```
 http://127.0.0.1:8000/api/v1/database/scan
 ```
@@ -120,7 +120,7 @@ Response Body (example):
 ```
 ![](assets/endpoint_clasification.gif)
 
-## endpoint getclasification
+## endpoint getclasification:
 
 ```
 http://127.0.0.1:8000/api/v1/database/scan
@@ -143,3 +143,27 @@ Response Body (example):
 
 ```
 ![](assets/endpoint_getclasification.gif)
+
+
+## endpoint getclasification:
+```
+http://127.0.0.1:8000/view
+```
+
+this endpoint return a Page HTML with the clasification of a database, receives as parameter an id type **objectid**
+
+id Parameter (example):
+```
+636b14f0d99ffmyid
+```
+
+Request Url (example):
+```
+http://127.0.0.1:8000/view?iddatabase=636b1bd5b6030ee96b15a225
+```
+this url in a browse rendireze the json with a template create in **jinja2**:
+
+![](assets/endpoint_view.gif)
+
+page renderized:
+![](https://i.ibb.co/kyX7v8J/webrenderized.png)
