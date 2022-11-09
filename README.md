@@ -74,4 +74,4 @@ This endpoint return the version name of the service and the version:
   "version": "1.0"
 }
 ```
-![](assets/2022-11-08%2020-59-13.gif)
+![](assets/endpoint_root.gif)
