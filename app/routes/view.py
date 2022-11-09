@@ -17,8 +17,8 @@ templates = Jinja2Templates(directory="app/templates")
 
 
 @router.get("/view", response_class=HTMLResponse)
-async def views(request: Request, iddatabase: str):
-    """return view html"""
+async def View_Html(request: Request, iddatabase: str):
+    """Return View in Html"""
     if not bson.ObjectId.is_valid(iddatabase):
         raise HTTPException(400, "Invalid id")
 
