@@ -1,10 +1,12 @@
  ### Steps To run in Local:
 for run the app need create a file .env with the next items:
 
+```
 db_mongo_url = mongodb+srv://<user>:<password>@cluster0.37dqxrv.mongodb.net/?retryWrites=true&w=majority
 dm_mongo_username = meli
 db_mongo_password =  Ek4wyzghzmYkmbgo
 key_encriptor = JJfmeevTgp5haMjiN0fd8gMWCoMg0ObMGuDYQ_B1LgE=
+```
 
 1. create a virtual env:
 ```
