@@ -145,7 +145,7 @@ Response Body (example):
 ![](assets/endpoint_getclasification.gif)
 
 
-## endpoint getclasification:
+## endpoint view:
 ```
 http://127.0.0.1:8000/view
 ```
