@@ -77,7 +77,7 @@ This endpoint return the version name of the service and the version:
 ![](assets/endpoint_root.gif)
 
 
-## emdpont datapersince
+## emdpoint datapersince
 ```
 http://127.0.0.1:8000/api/v1/database
 ```
@@ -100,3 +100,19 @@ Response Body (example):
 }
 ```
 ![](assets/endpoint_persistence.gif)
+
+## emdpoint clasification
+
+this endpoint generates the respective clasification from a database previously stored in mongodb and receives as parameter an id type **objectid**.
+id Parameter (example):
+```
+636b14f0d99ffmyid
+```
+
+Response Body (example):
+```
+{
+  "id of mysql clasificated": "636b1b0bb6030myid"
+}
+```
+![](assets/endpoint_clasification.gif)
