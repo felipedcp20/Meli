@@ -21,6 +21,6 @@ api_router = APIRouter()
 api_router.include_router(persistconnection.router, tags=["databaseMysql"])
 api_router.include_router(clasification.router, tags=["clasification"])
 api_router.include_router(getclasification.router, tags=["getclasification"])
-api_router.include_router(view.router)
+api_router.include_router(view.router, tags=["getclasification"])
 
 app.include_router(api_router)
