@@ -74,4 +74,4 @@ This endpoint return the version name of the service and the version:
   "version": "1.0"
 }
 ```
-![](https://media1.tenor.com/images/b543c7dd3e11e34da7908fed37df32ae/tenor.gif?itemid=27066230)
+![](assets/2022-11-08%2020-59-13.gif)
