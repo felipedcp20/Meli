@@ -7,6 +7,15 @@ dm_mongo_username = meli
 db_mongo_password =  Ek4wyzghzmYkmbgo
 key_encriptor = JJfmeevTgp5haMjiN0fd8gMWCoMg0ObMGuDYQ_B1LgE=
 ```
+** !! IMPORTANT !! **
+before to run the app you need insert yout public IP in the secure configuration in mongo:
+    ```
+     Mail :  gatab99977@hempyl.com
+     Pass: Meli2022*
+    ```
+    ![](https://i.ibb.co/gdj8H5Z/Ipadd.png)
+
+
 
 1. create a virtual env:
 ```
