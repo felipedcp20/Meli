@@ -77,7 +77,7 @@ This endpoint return the version name of the service and the version:
 ![](assets/endpoint_root.gif)
 
 
-## emdpoint datapersince
+## endpoint datapersince
 ```
 http://127.0.0.1:8000/api/v1/database
 ```
@@ -101,7 +101,10 @@ Response Body (example):
 ```
 ![](assets/endpoint_persistence.gif)
 
-## emdpoint clasification
+## endpoint clasification
+```
+http://127.0.0.1:8000/api/v1/database/scan
+```
 
 this endpoint generates the respective clasification from a database previously stored in mongodb and receives as parameter an id type **objectid**.
 id Parameter (example):
@@ -116,3 +119,27 @@ Response Body (example):
 }
 ```
 ![](assets/endpoint_clasification.gif)
+
+## endpoint getclasification
+
+```
+http://127.0.0.1:8000/api/v1/database/scan
+```
+
+
+this endpoint return  a json with the clasification of a database previsuly stored in mongo and receives as parameter an id type **objectid**
+
+id Parameter (example):
+```
+636b14f0d99ffmyid
+```
+
+Response Body (example):
+```
+
+  {
+  "conusult": "{'_id': ObjectId('636b1bd5b6030ee96b15a225'), 'schema': [{'databasename': 'meli', 'tables': [{'nametable': 'family', 'columns': [{'usermail': 'EMAIL_ADDRESS'}, {'credit_card_number': 'CREDIT_CARD_NUMBER'}, {'created_at': 'N/A'}]}, {'nametable': 'users', 'columns': [{'id': 'N/A'}, {'username': 'USERNAME'}, {'usermail': 'EMAIL_ADDRESS'}, {'credit_card_number': 'CREDIT_CARD_NUMBER'}, {'created_at': 'N/A'}, {'updated_at': 'N/A'}]}]}, {'databasename': 'user2', 'tables': [{'nametable': 'employes', 'columns': [{'id': 'N/A'}, {'username': 'USERNAME'}, {'usermail': 'EMAIL_ADDRESS'}, {'credit_card_number': 'CREDIT_CARD_NUMBER'}, {'created_at': 'N/A'}]}]}], 'datescan': '2022-11-08 22:0908'}"
+}
+
+```
+![](assets/endpoint_getclasification.gif)
