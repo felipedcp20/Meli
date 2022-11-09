@@ -75,3 +75,28 @@ This endpoint return the version name of the service and the version:
 }
 ```
 ![](assets/endpoint_root.gif)
+
+
+## emdpont datapersince
+```
+http://127.0.0.1:8000/api/v1/database
+```
+
+this endpoint checks the persistence of the credentials entered, if they are correct it encrypts them and stores them in the mongo database and returns the corresponding **Id**.
+
+Request Body (example):
+```
+{
+  "host": "myhost",
+  "User": "myuser",
+  "Password": "mypass"
+}
+```
+
+Response Body (example):
+```
+{
+  "The credentials are saved correct with id: ": "636b14f0d99ffmyid"
+}
+```
+![](assets/endpoint_persistence.gif)
